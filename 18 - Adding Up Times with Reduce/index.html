@@ -182,9 +182,7 @@
     </li>
   </ul>
 <script>
-
-  const timeNodes = Array.from(document.querySelectorAll('[data-time]'));
-
+  const timeNodes = [...document.querySelectorAll('[data-time]')];
   const seconds = timeNodes
     .map(node => node.dataset.time)
     .map(timeCode => {
@@ -200,7 +198,8 @@
     const mins = Math.floor(secondsLeft / 60);
     secondsLeft = secondsLeft % 60;
 
-    console.log(hours, mins, secondsLeft);
+    console.log(hours + " Hours", mins + " Minutes", secondsLeft + " Seconds");
+
 
 </script>
 </body>

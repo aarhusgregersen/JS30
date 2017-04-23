@@ -40,17 +40,18 @@
   function populateVoices() {
     voices = this.getVoices();
     voicesDropdown.innerHTML = voices
-      .filter(voice => voice.lang.includes('en'))
+    // Optionally filter list of voices for english
+      //.filter(voice => voice.lang.includes('en'))
       .map(voice => `<option value="${voice.name}">${voice.name} (${voice.lang})</option>`)
       .join('');
   }
 
   function setVoice() {
     msg.voice = voices.find(voice => voice.name === this.value);
-    toggle();
   }
 
   function toggle(startOver = true) {
+    // Stops current speech
     speechSynthesis.cancel();
     if (startOver) {
       speechSynthesis.speak(msg);
@@ -58,7 +59,6 @@
   }
 
   function setOption() {
-    console.log(this.name, this.value);
     msg[this.name] = this.value;
     toggle();
   }
@@ -67,7 +67,10 @@
   voicesDropdown.addEventListener('change', setVoice);
   options.forEach(option => option.addEventListener('change', setOption));
   speakButton.addEventListener('click', toggle);
+  // 'bind' calls your function in the context of 'this' and then takes parameters
   stopButton.addEventListener('click', () => toggle(false));
+
+  console.log(msg);
 
 </script>
 

@@ -87,7 +87,7 @@
     </div>
     <div class="item">
       <input type="checkbox">
-      <p>Try do it with out any libraries</p>
+      <p>Built without any libraries</p>
     </div>
     <div class="item">
       <input type="checkbox">
@@ -95,34 +95,32 @@
     </div>
     <div class="item">
       <input type="checkbox">
-      <p>Good Luck!</p>
+      <p>Adding more HTML elements won't break it</p>
     </div>
     <div class="item">
       <input type="checkbox">
-      <p>Don't forget to tweet your result!</p>
+      <p>As such it is an ambigious pure ES6 function!</p>
     </div>
   </div>
 
 <script>
 const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
+// console.log(checkboxes);
 
 let lastChecked;
 
 function handleCheck(e) {
   // Check if they had the shift key down
-  // AND check that they are checking it
+  // AND check they are checking it, not unchecking
   let inBetween = false;
-  if (e.shiftKey && this.checked) {
-    // go ahead and do what we please
-    // loop over every single checkbox
+  if(e.shiftKey && this.checked) {
     checkboxes.forEach(checkbox => {
-      console.log(checkbox);
-      if (checkbox === this || checkbox === lastChecked) {
+      if(checkbox === this || checkbox === lastChecked) {
         inBetween = !inBetween;
-        console.log('STarting to check them inbetween!');
+        console.log("Logging between these two points");
       }
 
-      if (inBetween) {
+      if(inBetween) {
         checkbox.checked = true;
       }
     });
